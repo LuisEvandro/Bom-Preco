@@ -1,0 +1,129 @@
+body{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.painel-hover:hover{
+    border: 1px solid rgba(21,72,116,0.5);
+}
+
+.list-group-clientes li{
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.txt-action-cliente{
+    font-size: 25px;
+    margin-bottom: 15px;
+    color: #154874;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.box-title-login{
+    border: 1px solid #154874;
+    padding: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #154874;
+    margin-bottom: 20px;
+    margin-top: 35px;
+}
+
+#btn-Login{
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.filtro-div{
+    margin-bottom: 25px;
+    float: right;
+}
+
+.NomeUser{
+    font-weight: bold;
+    cursor: unset;
+}
+
+.texto-desc-footer{
+    font-size: 18px;
+    color: #3d3d3d;
+    margin: 0;
+    padding: 25px;
+    text-transform: uppercase;
+}
+
+#id-section-footer{
+    position: relative;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.txtTituloCadastros{
+    font-weight: 600;
+    font-size: 26px;
+    color: #154874;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.txtProdutosHome{
+    font-weight: bold;
+    font-size: 38px;
+    color: #154874;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.txtPrutoCard{
+    color: #3d3d3d;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 23px;
+}
+
+.txtPrutoValorCard{
+    color: #3d3d3d;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.txtPrutoValorCard span{
+    font-size: 19px;
+    color: #154874;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}
+
+.border-form-cad{
+    border: 2px solid #154874;
+    border-radius: 15px;
+    padding: 15px 10px;
+}
+
+.MyForms{
+    border: 1px solid black;
+    border-radius: 35px;
+}
+
+.LogoMenu a{
+    padding: 0px !important;
+}
+
+.navbar-brand{
+    padding: 5px 15px !important;
+}
+
+.LogoMenu img{
+    max-width: 100px !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar-collapse {
+        text-align: center;
+    }
+  }
