@@ -59,20 +59,20 @@
         
         public function save() 
         {
-            //$codigo = $_POST['txtcod'];//finalizar cod increment
-            $cpf    = $_POST['NumCPFCliente'];
-            $nome   = $_POST['NomeCliente'];
-            $email    = $_POST['EmailCliente'];
-            $fone   = $_POST['TelefoneCliente'];
-            $senha  = $_POST['PassText'];
-            $cep = $_POST['NumCepCliente'];
-            $rua = $_POST['RuaCliente'];
-            $bairro = $_POST['BairroCliente'];
-            $estado = $_POST['select_estadoCliente'];
-            $cidade = $_POST['select_cidadeCliente'];
-            $numcasa = $_POST['NumCasaCliente'];
+            $codigo = $_POST['numCodeHidden'];//finalizar cod increment
+            $cpf    = $_POST['NumCPFClienteEdt'];
+            $nome   = $_POST['NomeClienteEdt'];
+            $email    = $_POST['EmailClienteEdt'];
+            $fone   = $_POST['TelefoneClienteEdt'];
+            $senha  = $_POST['PassTextEdt'];
+            $cep = $_POST['NumCepClienteEdt'];
+            $rua = $_POST['RuaClienteEdt'];
+            $bairro = $_POST['BairroClienteEdt'];
+            $estado = $_POST['select_estadoClienteEdt'];
+            $cidade = $_POST['select_cidadeClienteEdt'];
+            $numcasa = $_POST['NumCasaClienteEdt'];
             
-            $dadosSave=array('cpf'=>$cpf,'nome'=>$nome,'email'=>$email,'telefone'=>$fone,
+            $dadosSave=array('codigo'=>$codigo,'cpf'=>$cpf,'nome'=>$nome,'email'=>$email,'telefone'=>$fone,
                             'email'=> $email,'cep'=>$cep,'rua'=>$rua,'bairro'=>$bairro,
                             'estado'=>$estado,'cidade'=>$cidade, 'numeroCasa'=>$numcasa);
             
@@ -83,7 +83,7 @@
             }
             
         $this->db->update('cliente', $dadosSave,"codigo='$codigo'");
-        echo "gravou";
+        echo "success";
         
         }
     }

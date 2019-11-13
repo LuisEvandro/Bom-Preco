@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
     $(document).ready(function(){
+
+        lista();
         
         var header = document.getElementById("group-itens-clientes");
         var btns = header.getElementsByClassName("list-group-item");
@@ -50,9 +52,9 @@ $(document).ready(function(){
                         timer: 2000,
                     });
                     setTimeout(function(){ 
-                        //location.reload(); 
+                        location.reload();
                         lista(); 
-                    }, 2500);
+                    }, 2200);
                 }else{
                     Swal.fire({
                         type: "error",
@@ -75,12 +77,76 @@ $(document).ready(function(){
 		$.post('clientes/lista/', function(data) {
 		  data=$.parseJSON(data);
 		 
-		//   $("#tabres").find("tr:gt(0)").remove();
-		// 	for (var i = 0; i < data.length; i++){
-		// 		$('#lsclientes').append('<tr><td>' + data[i].cpf + '</td><td>' + data[i].nome + '</td><td>' + data[i].endereco + '</td><td><button class="del btn btn-xs btn-default" valor="'+data[i].codigo+'" type="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>&nbsp;<button class="edt btn btn-xs btn-default" valor="'+data[i].codigo+'" type="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></td></tr>');
-		// 	}
+		    $("#tab-cliente").find("tr:gt(0)").remove();
+                for (var i = 0; i < data.length; i++){
+                    $('#tab-cliente-list').append(`
+                    <tr>
+                        <td>` + data[i].nome + `</td>
+                        <td>` + data[i].cpf + `</td>
+                        <td>` + data[i].email + `</td>
+                        <td>
+                            <button type="button" class="delete-cliente btn btn-danger" valor="`+data[i].codigo+`">
+                                deletar
+                            </button>
+                    
+                            <button type="button" class="editar-cliente btn btn-primary" valor="`+data[i].codigo+`">
+                                editar
+                            </button>
+                        </td>
+                    </tr>`);
+			}
 			
 		});
 		
-	}
+    }
+
+    // Delete
+    $(document).on("click", ".delete-cliente", function(){
+		$.post("clientes/del/",{cod: $(this).attr("valor") },function(data){
+			lista();
+		});
+    });
+    
+    // editar
+
+    $(document).on("click",".editar-cliente",function(){
+        $.post("clientes/loadData/",{cod: $(this).attr("valor") },function(data){
+			data=$.parseJSON(data);
+            
+            $("#numCodeHidden").val(data[0].codigo);
+            $("#NumCPFClienteEdt").val(data[0].cpf);
+            $("#NomeClienteEdt").val(data[0].nome);
+            $("#EmailClienteEdt").val(data[0].email);
+            $("#TelefoneClienteEdt").val(data[0].telefone);
+            $("#NumCepClienteEdt").val(data[0].cep);
+            $("#RuaClienteEdt").val(data[0].rua);
+            $("#BairroClienteEdt").val(data[0].bairro);
+            $("#select_estadoClienteEdt").val(data[0].estado);
+            $("#select_cidadeClienteEdt").val(data[0].cidade);
+            $("#NumCasaClienteEdt").val(data[0].numeroCasa);
+        });
+    });
+
+    $(document).on("click","#BtnSalvarEditCliente",function(){
+        $.post("clientes/save/",$("#frmEditCliente").serialize(),function(data){
+            if(data == "success"){
+                Swal.fire({
+                    type: "success",
+                    html: "<h4><strong>Cliente atualizado com sucesso!</strong></h4>",
+                    showConfirmButton: false,
+                    timer: 2000,
+                });
+                setTimeout(function(){ 
+                    location.reload();
+                    lista(); 
+                }, 2200);
+            }else{
+                Swal.fire({
+                    type: "error",
+                    title: "Oops...",
+                    html: "<h4>Verifique se os campos estão preenchidos corretamente !</h4>",
+                });
+            }
+        });
+    });
 });
