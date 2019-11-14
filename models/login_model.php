@@ -9,8 +9,8 @@
 
         public function logar()
         {
-            $dados=array(':cpf' => $_POST['numCPF'],':senha' => $_POST['text-pass']);
-            $result = $this->db->select("SELECT cpf,nome FROM dbclientes.cliente WHERE 
+            $dados=array(':cpf' => $_POST['CPFLogin'],':senha' => $_POST['senhaLogin']);
+            $result = $this->db->select("select cpf,nome from cliente where 
                     cpf = :cpf AND senha = sha2(:senha,256)",$dados);
                     
             $count = count($result);

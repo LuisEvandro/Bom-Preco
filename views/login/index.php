@@ -11,15 +11,15 @@
         <form name="frmLogin" id="frmLogin" method="post" role="form">
             <div class="row">
                 <div class="form-group col-md-offset-4 col-sm-offset-4 col-sm-4 col-md-4 col-lg-4">
-                    <label for="CPF">E-mail</label>
-                    <input type="text" class="form-control" id="numCPF" name="numCPF" placeholder="CPF" maxlength="14">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" class="form-control cpf" id="CPFLogin" name="CPFLogin" placeholder="CPF">
                 </div>
             </div>
             
             <div class="row">
                 <div class="form-group col-md-offset-4 col-sm-offset-4 col-sm-4 col-md-4 col-lg-4">
                     <label for="pass">Senha:</label>
-                    <input type="password" class="form-control" id="text-pass" name="text-pass" placeholder="Senha" maxlength="10">
+                    <input type="password" class="form-control" id="senhaLogin" name="senhaLogin" placeholder="Senha">
                 </div>
             </div>
 

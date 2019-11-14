@@ -14,7 +14,7 @@
                             <a href="javascript:void(0)" class="list-group-item btn-item-cliente-lista">Lista de clientes</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" class="list-group-item btn-item-cliente-alterar-deletar">Alterar e deletar clientes</a>
+                            <a href="javascript:void(0)" class="list-group-item btn-item-cliente-alterar">Alterar clientes</a>
                         </li>
                     </ul>
                 </div>
@@ -100,8 +100,8 @@
             </form>
         </div>
     </div>
-    <!-- style="display:none"; -->
-    <div class="row" id="item-cliente-list">
+    
+    <div class="row" id="item-cliente-list" style="display:none;">
         <div class="col-md-12 col-xs-12 col-sm-12 text-center">
             <div class="txtTituloCadastros">
                 <p>Lista de Cliente</p>
@@ -128,8 +128,7 @@
         </div>
     </div>
 
-    <!-- style="display:none"; -->
-    <div class="row" id="item-cliente-editar">
+    <div class="row" id="item-cliente-editar" style="display:none;">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="txtTituloCadastros">
                 <p>Editar Cliente</p>

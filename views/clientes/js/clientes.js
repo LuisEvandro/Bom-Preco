@@ -2,6 +2,8 @@ $(document).ready(function(){
 
     $(document).ready(function(){
 
+
+
         lista();
         
         var header = document.getElementById("group-itens-clientes");
@@ -16,21 +18,21 @@ $(document).ready(function(){
 
         $(document).on("click", ".btn-item-cliente-cadastro", function(){
             $('#item-cliente-cadastro').fadeIn(300);
-            //$('#item-cliente-lista').fadeOut(100);
-            //$('#item-cliente-cadastro').fadeOut(100);
+            $('#item-cliente-list').fadeOut(100);
+            $('#item-cliente-editar').fadeOut(100);
         });
 
-        // $(document).on("click", ".btn-item-cliente-lista", function(){
-        //     $('#item-cliente-cadastro').fadeIn(300);
-        //     //$('#item-cliente-lista').fadeOut(100);
-        //     //$('#item-cliente-cadastro').fadeOut(100);
-        // });
+        $(document).on("click", ".btn-item-cliente-lista", function(){
+            $('#item-cliente-list').fadeIn(300);
+            $('#item-cliente-editar').fadeOut(100);
+            $('#item-cliente-cadastro').fadeOut(100);
+        });
 
-        // $(document).on("click", ".btn-item-cliente-cadastro", function(){
-        //     $('#item-cliente-cadastro').fadeIn(300);
-        //     //$('#item-cliente-lista').fadeOut(100);
-        //     //$('#item-cliente-cadastro').fadeOut(100);
-        // });
+        $(document).on("click", ".btn-item-cliente-alterar", function(){
+            $('#item-cliente-editar').fadeIn(300);
+            $('#item-cliente-list').fadeOut(100);
+            $('#item-cliente-cadastro').fadeOut(100);
+        });
     });
 
 
@@ -110,8 +112,9 @@ $(document).ready(function(){
     // editar
 
     $(document).on("click",".editar-cliente",function(){
+        
         $.post("clientes/loadData/",{cod: $(this).attr("valor") },function(data){
-			data=$.parseJSON(data);
+            data=$.parseJSON(data);
             
             $("#numCodeHidden").val(data[0].codigo);
             $("#NumCPFClienteEdt").val(data[0].cpf);
@@ -128,25 +131,44 @@ $(document).ready(function(){
     });
 
     $(document).on("click","#BtnSalvarEditCliente",function(){
-        $.post("clientes/save/",$("#frmEditCliente").serialize(),function(data){
-            if(data == "success"){
-                Swal.fire({
-                    type: "success",
-                    html: "<h4><strong>Cliente atualizado com sucesso!</strong></h4>",
-                    showConfirmButton: false,
-                    timer: 2000,
-                });
-                setTimeout(function(){ 
-                    location.reload();
-                    lista(); 
-                }, 2200);
-            }else{
+        if( $("#numCodeHidden").val() == "" ||  $("#numCodeHidden").val() == " " ||
+            $("#NumCPFClienteEdt").val() == "" || $("#NumCPFClienteEdt").val() == " " ||
+            $("#NomeClienteEdt").val() == "" || $("#NomeClienteEdt").val() == " " || 
+            $("#RuaClienteEdt").val() == "" || $("#RuaClienteEdt").val() == " " ||
+            $("#EmailClienteEdt").val() == "" || $("#EmailClienteEdt").val() == " " || 
+            $("#BairroClienteEdt").val() == "" || $("#BairroClienteEdt").val() == " " ||
+            $("#TelefoneClienteEdt").val() == "" || $("#TelefoneClienteEdt").val() == " " ||  
+            $("#select_estadoClienteEdt").val() == "" || $("#select_estadoClienteEdt").val() == " " ||
+            $("#NumCepClienteEdt").val() == "" || $("#NumCepClienteEdt").val() == " " || 
+            $("#select_cidadeClienteEdt").val() == "" || $("#select_cidadeClienteEdt").val() == " " || 
+            $("#NumCasaClienteEdt").val() == "" || $("#NumCasaClienteEdt").val() == " ")
+            {
                 Swal.fire({
                     type: "error",
                     title: "Oops...",
                     html: "<h4>Verifique se os campos estão preenchidos corretamente !</h4>",
                 });
-            }
-        });
+        }else{
+            $.post("clientes/save/",$("#frmEditCliente").serialize(),function(data){
+                if(data == "success"){
+                    Swal.fire({
+                        type: "success",
+                        html: "<h4><strong>Cliente atualizado com sucesso!</strong></h4>",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                    setTimeout(function(){ 
+                        location.reload();
+                        lista(); 
+                    }, 2200);
+                }else{
+                    Swal.fire({
+                        type: "error",
+                        title: "Oops...",
+                        html: "<h4>Verifique se os campos estão preenchidos corretamente !</h4>",
+                    });
+                }
+            });
+        }
     });
 });
