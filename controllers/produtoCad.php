@@ -18,5 +18,9 @@ class ProdutoCad extends Controller {
     function cadProduto(){
         $this->model->cadProduto();
     }
+
+    function listaCategoria(){
+        $this->model->listaCategoria();
+    }
   
 }

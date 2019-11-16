@@ -2,8 +2,14 @@
     <div class="row">
         <div class="col-md-4 col-sm-4 col-sm-offset-4 col-md-offset-4">
             <div class="txtTituloCadastros">Cadastrar Produtos</div>
-            <form name="frmCadProduto" id="frmCadProduto" method="post">
+            <form name="frmCadProduto" id="frmCadProduto" method="post" enctype="multipart/form-data">
                 <div class="row border-form-cad">
+                    
+                    <div class="col-md-10 col-sm-10 form-group">
+                        <label for="lblFoto">Foto do Produto </label>
+                        <input type="file" class="form-upload" name="Upfoto" id="Upfoto" file-accept="jpg, jpeg, png, gif" file-maxsize="10240" required>
+                    </div>
+
                     <div class="col-md-10 col-sm-10 form-group">
                         <label for="lblNomeProduto">Nome Produto</label>
                         <input type="text" name="NomeProduto" id="NomeProduto" class="form-control MyForms" required placeholder="Produto">
@@ -12,6 +18,7 @@
                     <div class="col-md-10 col-sm-10 form-group">
                         <label for="lblNomeCidadeCliente">Categoria </label>
                         <select name="select_CategoriaProduto" id="select_CategoriaProduto" class="form-control MyForms">
+                            <!-- Dados de categoria do banco -->
                         </select>
                     </div>
                     

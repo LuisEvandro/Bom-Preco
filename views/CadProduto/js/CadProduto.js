@@ -1,13 +1,26 @@
 $(document).ready(function(){
 
-    // $.post("ListaCategorias.php",{}).done(function(dados){
-    //     $("#select_CategoriaProduto").html(dados);
+    $.post("produtoCad/listaCategoria", function(data){
+        data=$.parseJSON(data);
+
+        for (var i = 0; i < data.length; i++){
+            $("#select_CategoriaProduto").html(`
+                <option value="`+data[i].id+`">`+ data[i].nome +`</option>
+            `);
+        }
+    });
+
+    // $(document).on("click","#BtnSalvarProduto",function(){
+    //     var frm=$("#frmCadProduto").serialize(); 
+    //     $.post("produtoCad/cadProduto",frm ,function(){
+    //         console.log("teste");
+    //     });
     // });
 
     $(document).on("click","#BtnSalvarProduto",function(){
         if($("#NomeProduto").val() && $("#ValorProduto").val() && $("#select_CategoriaProduto").val != ""){
             var frm=$("#frmCadProduto").serialize(); 
-            $.post("produtos/cadProduto",frm).done(function(retorno){
+            $.post("produtoCad/cadProduto",frm ,function(retorno){
                 if(retorno == "success"){
                     Swal.fire({
                         type: "success",
@@ -16,7 +29,7 @@ $(document).ready(function(){
                         timer: 2000,
                     });
 
-                    setTimeout(function(){ location.reload(); }, 2500);
+                    //setTimeout(function(){ location.reload(); }, 2500);
                 }else if(retorno == "fail"){
                     Swal.fire({
                         type: "error",
