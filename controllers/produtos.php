@@ -15,25 +15,31 @@ class Produtos extends Controller {
 		$this->view->render('footer');
     }
 
+    function cadastrarProd(){
+        $this->view->title = 'Cadastro de Produtos';
+		$this->view->render('header');
+        $this->view->render('produtos/cadastro-produto');
+		$this->view->render('footer');  
+    }
+
+    function cadProduto(){
+        $this->model->cadProduto();
+    }
 
     function lista(){
         $this->model->lista();
-
     }
 
     function listaCarrinho(){
         $this->model->listaCarrinho();
-
     }
     
     function addCarrinho(){
         $this->model->addCarrinho();
-
     }
 
     function rmCarrinho(){
         $this->model->rmCarrinho();
-
     }
   
 }

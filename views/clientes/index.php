@@ -133,6 +133,12 @@
             <div class="txtTituloCadastros">
                 <p>Editar Cliente</p>
             </div>
+
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>ALERTA !</strong> Para conseguir editar precisa selecionar um usuário em Lista de clientes !
+            </div>
+
             <form name="frmEditCliente" id="frmEditCliente" method="post">
                 <div class="row border-form-cad">
                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -198,7 +204,7 @@
                                 <label for="lblNumero">Número </label>
                                 <input type="text" name="NumCasaClienteEdt" id="NumCasaClienteEdt" class="form-control MyForms" placeholder="Número">
                             </div>
-
+                            <!-- Deixar o botão disable se não ter um user selecionado para editar !! -->
                             <div class="col-sm-10 col-md-10" style="margin-top:15px;">
                                 <button type="button" id="BtnSalvarEditCliente" class="btn btn-success btn-lg">
                                     Salvar

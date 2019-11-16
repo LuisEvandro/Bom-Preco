@@ -8,9 +8,7 @@ class Produtos_Model extends Model {
     
 	public function lista() 
     {  
-        $result=$this->db->select('select codigo,descricao,valor from produto order by descricao');
-		
-		//print_r($result);
+        $result=$this->db->select('select codigo,descricao,valor,foto from produto order by descricao');
 		
 		$result = json_encode($result);
 		

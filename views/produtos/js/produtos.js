@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	lista();
-	listaCarrinho();
+    listaCarrinho();
 		
 	function lista(){
 	
@@ -16,9 +16,7 @@ $(document).ready(function(){
                                 <input type="hidden" value="` + data[i].codigo + ` " />
                                 <p class="produtos-name-card">` + data[i].descricao + `</p>
                                 <p class="produtos-valor-card">R$ ` + data[i].valor + `</p>
-                                <div class="btns-card-prod">
-                                    <button type="button" class="btn btn-sm btn-success addCarrinho" role="button" valor="`+data[i].codigo+`">Comprar</button>
-                                </div>
+                                <button type="button" class="btn btn-sm btn-success addCarrinho" role="button" valor="`+data[i].codigo+`">Comprar</button>
                             </div>
                         </div>
                     </div>
@@ -26,7 +24,7 @@ $(document).ready(function(){
             }
 		});
 	}
-
+    
 	$(document).on("click",".addCarrinho",function(){
 		var pro=$(this).attr("valor");
 		$.post('produtos/addCarrinho/',{ codproduto: pro }).done(function(data) {
@@ -38,14 +36,17 @@ $(document).ready(function(){
 		var pro=$(this).attr("valor");
 		$.post('produtos/rmCarrinho/',{ codproduto: pro }).done(function(data) {
 			listaCarrinho();			  
-          });
+        });
 	});
 
 	function listaCarrinho(){
+
         $.post('produtos/listaCarrinho/', function(data) {
             
             try{
-                data=JSON.parse(data);		
+                data=JSON.parse(data);
+
+                $("#list-cart").find("div").remove();
                 
                 for (var i = 0; i < data.length; i++){
                     $('#list-cart').append(`
@@ -54,8 +55,7 @@ $(document).ready(function(){
                                 <!-- <img src="..." alt="..."> -->
                                 <div class="caption">
                                     <input type="hidden" value="` + data[i].codigo + ` " />
-                                    <input type="hidden" value="`+ data[i].valortotal +`"/>
-                                    <input type="hidden" id="id-valorTotalCart" value="`+ data[i].valortotal +`"/>
+                                    <input type="hidden" id="id-valor-total-card" value="`+ data[i].valortotal +`"/>
                                     <p class="produtos-name-card">quantidade = ` + data[i].qtd + `</p>
                                     <p class="produtos-name-card">` + data[i].descricao + `</p>
                                     <p class="produtos-valor-card">R$ ` + data[i].valorun + `</p>
@@ -67,6 +67,8 @@ $(document).ready(function(){
                 }
             }
             catch(ee){
+                $("#list-cart").find("div").remove();
+                $("#list-cart").html('<div class="txt-cart-null"><p>Carrinho Vazio</p></div>');
             }  
         });
     }

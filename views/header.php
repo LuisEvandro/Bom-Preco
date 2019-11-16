@@ -59,14 +59,18 @@
                         <a href="<?=URL;?>produtos">Produto</a>
                     </li>
                     
-                    <!-- <li class="dropdown">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastrar <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="">Categoria</a></li>
-                            <li><a href="">Produto</a></li>
+                            <li>
+                                <a href="">Categoria</a>
+                            </li>
+                            <li>
+                                <a href="<?=URL;?>produtoCad">Produtos</a>
+                            </li>
                             <li role="separator" class="divider"></li>
                         </ul>
-                    </li> -->
+                    </li>
                 </ul>
                 <?php error_reporting(E_ALL &~E_NOTICE); session_start(); ?>
                 <ul class="nav navbar-nav navbar-right">
