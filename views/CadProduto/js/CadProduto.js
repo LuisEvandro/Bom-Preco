@@ -3,8 +3,8 @@ $(document).ready(function(){
     $.post("produtoCad/listaCategoria", function(data){
         data=$.parseJSON(data);
 
-        for (var i = 0; i < data.length; i++){
-            $("#select_CategoriaProduto").html(`
+        for (let i = 0; i <= data.length; i++){
+            $("#select_CategoriaProduto").append(`
                 <option value="`+data[i].id+`">`+ data[i].nome +`</option>
             `);
         }
@@ -21,7 +21,7 @@ $(document).ready(function(){
         if($("#NomeProduto").val() && $("#ValorProduto").val() && $("#select_CategoriaProduto").val != ""){
             var frm=$("#frmCadProduto").serialize(); 
             $.post("produtoCad/cadProduto",frm ,function(retorno){
-                if(retorno == "success"){
+                if(retorno == "Upload com sucesso!"){
                     Swal.fire({
                         type: "success",
                         html: "<h4><strong>Produto cadastrado com sucesso!</strong></h4>",
@@ -29,8 +29,10 @@ $(document).ready(function(){
                         timer: 2000,
                     });
 
-                    //setTimeout(function(){ location.reload(); }, 2500);
-                }else if(retorno == "fail"){
+                    setTimeout(function(){ 
+                        location.reload(); 
+                    }, 2500);
+                }else if(retorno == "Erro no upload"){
                     Swal.fire({
                         type: "error",
                         title: "Oops...",

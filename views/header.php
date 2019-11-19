@@ -63,7 +63,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastrar <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="">Categoria</a>
+                                <a href="<?=URL;?>categoriaCad">Categoria</a>
                             </li>
                             <li>
                                 <a href="<?=URL;?>produtoCad">Produtos</a>
