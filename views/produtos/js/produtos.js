@@ -16,7 +16,7 @@ $(document).ready(function(){
                                 <input type="hidden" value="` + data[i].codigo + ` " />
                                 <p class="produtos-name-card">` + data[i].descricao + `</p>
                                 <p class="produtos-valor-card">R$ ` + data[i].valor + `</p>
-                                <button type="button" class="btn btn-sm btn-success addCarrinho" role="button" valor="`+data[i].codigo+`">Comprar</button>
+                                <button type="button" class="btn btn-sm btn-success addCarrinho" role="button" valor="`+data[i].codigo+`">Adicionar ao carrinho</button>
                             </div>
                         </div>
                     </div>
@@ -45,6 +45,8 @@ $(document).ready(function(){
             
             try{
                 data=JSON.parse(data);
+                
+                $("#btn-finalizar-compra").removeAttr("disabled", "disabled");
 
                 $("#list-cart").find("div").remove();
                 
@@ -69,6 +71,7 @@ $(document).ready(function(){
             catch(ee){
                 $("#list-cart").find("div").remove();
                 $("#list-cart").html('<div class="txt-cart-null"><p>Carrinho Vazio</p></div>');
+                $("#btn-finalizar-compra").attr("disabled", "disabled");
             }  
         });
     }

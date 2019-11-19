@@ -9,6 +9,19 @@ body{
     border-bottom: 1px solid #3d3d3d;
 }
 
+.txt-valorTotal-cart span{
+    font-size: 24px;
+    color: #154874;
+    font-weight: bold;
+}
+
+.txt-valorTotal-cart p{
+    font-size: 16px;
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
 .txt-cart-null p{
     font-size: 25px;
     color: #154874;
