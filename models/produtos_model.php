@@ -66,7 +66,7 @@ class Produtos_Model extends Model {
         //se tiver produtos no carrinho
         if(count($carrinho)>0){
             //select para retornar os dados do produto
-            $sql="select descricao,valor from produto where codigo=:par_cod";
+            $sql="select descricao,valor,foto from produto where codigo=:par_cod";
 
             //vetor armazena o resultado
             $vetRes=array();
@@ -77,6 +77,7 @@ class Produtos_Model extends Model {
                     $param=array(":par_cod"=>$pro);
                     $infopro=$this->db->select($sql,$param);
                     $vetRes[$i]["codigo"]=$pro;
+                    $vetRes[$i]["foto"]=$infopro[0]->foto;
                     $vetRes[$i]["descricao"]=$infopro[0]->descricao;
                     $vetRes[$i]["valorun"]=$infopro[0]->valor;
                     $vetRes[$i]["qtd"]=$qtd;

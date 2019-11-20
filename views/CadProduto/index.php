@@ -4,9 +4,9 @@
             <div class="txtTituloCadastros">Cadastrar Produtos</div>
             <form name="frmCadProduto" id="frmCadProduto" method="post" enctype="multipart/form-data">
                 <div class="row border-form-cad">
-                    
+
                     <div class="col-md-10 col-sm-10 form-group">
-                        <label for="lblFoto">Foto do Produto </label>
+                        <label for="lblFoto">Foto do Produto <span class="text-danger text-center">(jpg, jpeg, png, gif)</span></label>
                         <input type="file" class="form-upload" name="Upfoto" id="Upfoto" required>
                     </div>
 
