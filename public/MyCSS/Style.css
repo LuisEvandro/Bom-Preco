@@ -9,6 +9,22 @@ body{
     border-bottom: 1px solid #3d3d3d;
 }
 
+.size-card-procuct-cart{
+    text-align: center;
+    height: 90px;
+}
+
+.size-card-procuct{
+    text-align: center;
+    height: 110px;
+}
+
+.size-card-procuct-cart img,
+.size-card-procuct img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .txt-valorTotal-cart span{
     font-size: 24px;
     color: #154874;

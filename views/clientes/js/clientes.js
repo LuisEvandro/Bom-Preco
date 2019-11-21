@@ -2,8 +2,6 @@ $(document).ready(function(){
 
     $(document).ready(function(){
 
-
-
         lista();
         
         var header = document.getElementById("group-itens-clientes");
@@ -75,7 +73,6 @@ $(document).ready(function(){
     });
 
     function lista(){
-	
 		$.post('clientes/lista/', function(data) {
 		  data=$.parseJSON(data);
 		 

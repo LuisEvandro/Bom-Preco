@@ -9,9 +9,11 @@ $(document).ready(function(){
             
             for (var i = 0; i < data.length; i++){
                 $('#list-prod').append(`
-                    <div class="col-sm-6 col-md-4 col-xs-12">
+                    <div class="col-sm-6 col-md-6 col-xs-12">
                         <div class="thumbnail produtos-style-card">
-                            <img src="public/ProdutoFoto/`+ data[i].foto +`" alt="foto-` + data[i].descricao + `">
+                            <div class="size-card-procuct">
+                                <img src="public/ProdutoFoto/`+ data[i].foto +`" alt="foto-` + data[i].descricao + `">
+                            </div>
                             <div class="caption">
                                 <input type="hidden" value="` + data[i].codigo + ` " />
                                 <p class="produtos-name-card">` + data[i].descricao + `</p>
@@ -52,9 +54,11 @@ $(document).ready(function(){
                 
                 for (var i = 0; i < data.length; i++){
                     $('#list-cart').append(`
-                        <div class="col-sm-6 col-md-4 col-xs-12">
+                        <div class="col-sm-6 col-md-6 col-xs-12">
                             <div class="thumbnail produtos-style-card">
-                                <img src="public/ProdutoFoto/`+ data[i].foto +`" alt="foto-` + data[i].descricao + `">
+                                <div class="size-card-procuct-cart">
+                                    <img src="public/ProdutoFoto/`+ data[i].foto +`" alt="foto-` + data[i].descricao + `">
+                                </div>
                                 <div class="caption">
                                     <input type="hidden" value="` + data[i].codigo + ` " />
                                     <input type="hidden" id="id-valor-total-card" value="`+ data[i].valortotal +`"/>

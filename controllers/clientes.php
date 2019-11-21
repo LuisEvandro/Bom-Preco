@@ -14,6 +14,7 @@
             $this->view->render('clientes/index');
             $this->view->render('footer');
         }
+
         function insert()
         {
             $this->model->insert();

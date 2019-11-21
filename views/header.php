@@ -52,16 +52,16 @@
                     </li>
 
                     <li>
-                        <a href="<?=URL;?>clientes">Cliente</a>
+                        <a href="<?=URL;?>clientes">Clientes</a>
                     </li>
 
                     <li>
-                        <a href="<?=URL;?>produtos">Produto</a>
+                        <a href="<?=URL;?>produtos">Produtos</a>
                     </li>
                     
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastrar <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu text-center">
                             <li>
                                 <a href="<?=URL;?>categoriaCad">Categoria</a>
                             </li>
