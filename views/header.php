@@ -51,10 +51,13 @@
                     <li>
                         <a href="<?=URL;?>">Home</a>
                     </li>
+                    <?php if($_SESSION["cpf"] == "418.524.648-01"): ?>
+                        <li>
+                            <a href="<?=URL;?>clientes">Clientes</a>
+                        </li>
+                    <?php else: ?>
 
-                    <li>
-                        <a href="<?=URL;?>clientes">Clientes</a>
-                    </li>
+                    <?php endif; ?>
 
                     <li>
                         <a href="<?=URL;?>produtos">Produtos</a>
@@ -66,7 +69,7 @@
                             <li>
                                 <a href="<?=URL;?>clienteCad">Cliente</a>
                             </li>
-                            <?php if($_SESSION["logado"] == true): ?>
+                            <?php if($_SESSION["cpf"] == "418.524.648-01"): ?>
                                 <li>
                                     <a href="<?=URL;?>categoriaCad">Categoria</a>
                                 </li>

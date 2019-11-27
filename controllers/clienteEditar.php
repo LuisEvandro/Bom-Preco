@@ -4,7 +4,7 @@
 
         function __construct() {
             parent::__construct();
-            //Auth::autentica();
+            Auth::autentica();
             $this->view->js = array('editarCliente/js/editarCliente.js');
         }
         

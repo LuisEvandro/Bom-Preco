@@ -5,9 +5,9 @@
                 <p>Editar Cliente</p>
             </div>
 
-            <div class="alert alert-danger alert-dismissible" role="alert">
+            <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong>ALERTA !</strong> Para conseguir editar precisa selecionar um usuário em Lista de clientes !
+                <strong>Atenção !</strong> Sempre confira os dados antes de salvar !
             </div>
 
             <form name="frmEditCliente" id="frmEditCliente" method="post">
@@ -19,7 +19,7 @@
                             
                             <div class="col-md-10 col-sm-10 form-group">
                                 <label for="lblCPF">CPF </label>
-                                <input type="text" name="NumCPFClienteEdt" id="NumCPFClienteEdt" value="<?php echo $_SESSION["cpf"] ?>" class="form-control MyForms cpf" required readonly placeholder="CPF">
+                                <input type="text" name="NumCPFClienteEdt" id="NumCPFClienteEdt" value="<?php echo $_SESSION["cpf"] ?>" title="Esse campo não pode ser editado" class="form-control MyForms cpf" required readonly placeholder="CPF">
                             </div>
 
                             <div class="col-md-10 col-sm-10 form-group">

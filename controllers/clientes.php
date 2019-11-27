@@ -8,11 +8,21 @@
         }
         
         function index() {
-            Auth::autentica();
-            $this->view->title = 'Lista de Clientes';
-            $this->view->render('header');
-            $this->view->render('clientes/index');
-            $this->view->render('footer');
+            error_reporting(E_ALL &~E_NOTICE); session_start();
+            if($_SESSION["cpf"] == "418.524.648-01"):
+                
+                Auth::autentica();
+                $this->view->title = 'Lista de Clientes';
+                $this->view->render('header');
+                $this->view->render('clientes/index');
+                $this->view->render('footer');
+            
+            else:
+                $this->view->title = 'Lista de Clientes';
+                $this->view->render('header');
+                $this->view->render('error/index');
+                $this->view->render('footer');
+            endif;
         }
 
         function insert()

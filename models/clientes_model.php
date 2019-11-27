@@ -31,17 +31,18 @@
             $cidade = $_POST['select_cidadeCliente'];
             $numcasa = $_POST['NumCasaCliente'];
             
-            $validadeCPF = $this->db->select('select count(*) from cliente where cpf = :cpf',array (":cpf"=>$cpf));
+            $validadeCPF = $this->db->select('select * from cliente where cpf = :cpf',array (":cpf"=>$cpf));
             
-            if($validadeCPF == 0){
-
+            $retorno = json_encode($validadeCPF);
+            
+            if($retorno != null && $retorno != "" && $retorno != "[]"){
+                echo "cpf-fail";
+            }else{
                 $this->db->insert('cliente', array('cpf'=>$cpf,'nome'=>$nome,'email'=>$email,'telefone'=>$fone,
                                 'senha'=>hash('sha256',$senha),'email'=> $email,
                                 'cep'=>$cep,'rua'=>$rua,'bairro'=>$bairro,'estado'=>$estado,
                                 'cidade'=>$cidade, 'numeroCasa'=>$numcasa));
                 echo "success";
-            }else{
-                echo "cpf-fail";
             }
         }
         
