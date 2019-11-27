@@ -56,13 +56,13 @@ $(document).ready(function(){
                     $('#list-cart').append(`
                         <div class="col-sm-6 col-md-6 col-xs-12">
                             <div class="thumbnail produtos-style-card">
+                                <span class="badge product-count">` + data[i].qtd + `</span>
                                 <div class="size-card-procuct-cart">
                                     <img src="public/ProdutoFoto/`+ data[i].foto +`" alt="foto-` + data[i].descricao + `">
                                 </div>
                                 <div class="caption">
                                     <input type="hidden" value="` + data[i].codigo + ` " />
                                     <input type="hidden" id="id-valor-total-card" value="`+ data[i].valortotal +`"/>
-                                    <p class="produtos-name-card">quantidade = ` + data[i].qtd + `</p>
                                     <p class="produtos-name-card">` + data[i].descricao + `</p>
                                     <p class="produtos-valor-card">R$ ` + data[i].valorun + `</p>
                                     <button type="button" class="btn btn-sm btn-danger rmCarrinho" role="button" valor="`+data[i].codigo+`">Remover</button>

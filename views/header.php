@@ -74,16 +74,16 @@
                 </ul>
                 <?php error_reporting(E_ALL &~E_NOTICE); session_start(); ?>
                 <ul class="nav navbar-nav navbar-right">
-                    <?php if($_SESSION["LOGIN"] == ""): ?>
+                    <?php if($_SESSION["logado"] == false): ?>
                         <li class="txtLoginMenu">
                             <a href="<?=URL;?>login" >Login</a>
                         </li>
                     <?php else: ?>
                         <li class="txtLoginMenu">
-                            <a href="#" class="NomeUser">Bem vindo <?php echo $_SESSION["LOGIN"]; ?>.</a>
+                            <a href="javascript:void(0);" class="NomeUser">Bem vindo <?php echo $_SESSION["nome"]; ?></a>
                         </li>
                         <li class="txtLoginMenu">
-                            <a href="<?=URL;?>logout/logout" >Logout</a>
+                            <a href="<?=URL;?>logout" >Logout</a>
                         </li>
                     <?php endif; ?>
                 </ul>

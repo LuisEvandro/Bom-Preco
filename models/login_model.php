@@ -10,6 +10,7 @@
         public function logar()
         {
             $dados=array(':cpf' => $_POST['CPFLogin'],':senha' => $_POST['senhaLogin']);
+            
             $result = $this->db->select("select cpf,nome from cliente where 
                     cpf = :cpf AND senha = sha2(:senha,256)",$dados);
                     

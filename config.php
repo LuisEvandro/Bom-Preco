@@ -1,7 +1,7 @@
 <?php
 
 // coloque a barra / no final
-define('URL', 'http://localhost:90/BomPreco/');
+define('URL', 'http://localhost:8080/BomPreco/');
 define('LIBS', 'libs/');
 
 //conf. da conexao com o BD

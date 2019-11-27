@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$("#btn-Login").click(function(e){
 		e.preventDefault();
-		$.post("logar/",$("#frmLogin").serialize(),function(data){
+		$.post("login/logar/",$("#frmLogin").serialize(),function(data){
 			if(data=="logado"){
                 Swal.fire({
                     type: "success",
@@ -10,7 +10,7 @@ $(document).ready(function(){
                     timer: 2000,
                 });
                 setTimeout(function(){
-                    window.location='../index/';
+                    window.location='/BomPreco/';
                 }, 2100);
 			}
 			else{
