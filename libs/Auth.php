@@ -11,7 +11,7 @@ class Auth
         $logged = $_SESSION['logado'];
         if ($logged == false) {
             session_destroy();
-            header('Location: BomPreco/login/');
+            header('Location: /BomPreco/login');
             exit;
         }
     }

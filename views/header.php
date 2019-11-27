@@ -31,6 +31,7 @@
     </head>
 
     <body> 
+        <?php error_reporting(E_ALL &~E_NOTICE); session_start(); ?>
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -63,22 +64,33 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastrar <span class="caret"></span></a>
                         <ul class="dropdown-menu text-center">
                             <li>
-                                <a href="<?=URL;?>categoriaCad">Categoria</a>
+                                <a href="<?=URL;?>clienteCad">Cliente</a>
                             </li>
-                            <li>
-                                <a href="<?=URL;?>produtoCad">Produtos</a>
-                            </li>
+                            <?php if($_SESSION["logado"] == true): ?>
+                                <li>
+                                    <a href="<?=URL;?>categoriaCad">Categoria</a>
+                                </li>
+
+                                <li>
+                                    <a href="<?=URL;?>produtoCad">Produtos</a>
+                                </li>
+                            <?php else: ?>
+
+                            <?php endif; ?>
                             <li role="separator" class="divider"></li>
                         </ul>
                     </li>
                 </ul>
-                <?php error_reporting(E_ALL &~E_NOTICE); session_start(); ?>
+                
                 <ul class="nav navbar-nav navbar-right">
                     <?php if($_SESSION["logado"] == false): ?>
                         <li class="txtLoginMenu">
                             <a href="<?=URL;?>login" >Login</a>
                         </li>
                     <?php else: ?>
+                        <li class="txtLoginMenu">
+                            <a href="<?=URL;?>clienteEditar" valor="<?php echo $_SESSION["codigo"] ?>" id="btn-edit-menu" >Editar</a>
+                        </li>
                         <li class="txtLoginMenu">
                             <a href="javascript:void(0);" class="NomeUser">Bem vindo <?php echo $_SESSION["nome"]; ?></a>
                         </li>

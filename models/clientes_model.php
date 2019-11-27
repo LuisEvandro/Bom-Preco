@@ -31,16 +31,18 @@
             $cidade = $_POST['select_cidadeCliente'];
             $numcasa = $_POST['NumCasaCliente'];
             
+            //$validadeCPF = $this->db->select("select cpf from cliente");
+
             $this->db->insert('cliente', array('cpf'=>$cpf,'nome'=>$nome,'email'=>$email,'telefone'=>$fone,
-                                'senha'=>hash('sha256',$senha),'email'=> $email,
-                                'cep'=>$cep,'rua'=>$rua,'bairro'=>$bairro,'estado'=>$estado,
-                                'cidade'=>$cidade, 'numeroCasa'=>$numcasa));
-        echo "success";
+                            'senha'=>hash('sha256',$senha),'email'=> $email,
+                            'cep'=>$cep,'rua'=>$rua,'bairro'=>$bairro,'estado'=>$estado,
+                            'cidade'=>$cidade, 'numeroCasa'=>$numcasa));
+            echo "success";
+            //echo $validadeCPF;
         }
         
         public function del() 
         {  
-            //o codigo deve ser um inteiro
             $cod=(int)$_POST['cod'];
             
             $this->db->delete('cliente',"codigo='$cod'");
@@ -48,7 +50,6 @@
         
         public function loadData() 
         {  
-            //o codigo deve ser um inteiro
             $cod=(int)$_POST['cod'];
             
             $result=$this->db->select('select codigo,trim(cpf)as cpf,nome,email,telefone,cep,rua,bairro,estado,cidade,numeroCasa from cliente where codigo=:cod',array(":cod"=>$cod));
@@ -71,16 +72,29 @@
             $estado = $_POST['select_estadoClienteEdt'];
             $cidade = $_POST['select_cidadeClienteEdt'];
             $numcasa = $_POST['NumCasaClienteEdt'];
-            
-            $dadosSave=array('codigo'=>$codigo,'cpf'=>$cpf,'nome'=>$nome,'email'=>$email,'telefone'=>$fone,
-                            'email'=> $email,'cep'=>$cep,'rua'=>$rua,'bairro'=>$bairro,
-                            'estado'=>$estado,'cidade'=>$cidade, 'numeroCasa'=>$numcasa);
-            
+
+            $dadosSave=array('codigo'=>$codigo,'nome'=>$nome,'email'=>$email,'telefone'=>$fone,
+                        'email'=> $email,'cep'=>$cep,'rua'=>$rua,'bairro'=>$bairro,
+                        'estado'=>$estado,'cidade'=>$cidade, 'numeroCasa'=>$numcasa);
+
             
             if($senha!=""){
                 $senha=hash('sha256',$senha);
                 $dadosSave['senha']=$senha;
             }
+
+            Session::init();
+            Session::set('codigo', $codigo);
+            Session::set('nome', $nome);
+            Session::set('email', $email);
+            Session::set('telefone', $fone);
+            Session::set('cep', $cep);
+            Session::set('rua', $rua);
+            Session::set('bairro', $bairro);
+            Session::set('estado', $estado);
+            Session::set('cidade', $cidade);
+            Session::set('numeroCasa', $numcasa);
+            Session::set('cpf', $cpf);
             
         $this->db->update('cliente', $dadosSave,"codigo='$codigo'");
         echo "success";

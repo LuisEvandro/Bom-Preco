@@ -4,12 +4,12 @@
 
         function __construct() {
             parent::__construct();
-            //Auth::autentica();
             $this->view->js = array('clientes/js/clientes.js');
         }
         
         function index() {
-            $this->view->title = 'Cadastro de Clientes';
+            Auth::autentica();
+            $this->view->title = 'Lista de Clientes';
             $this->view->render('header');
             $this->view->render('clientes/index');
             $this->view->render('footer');
