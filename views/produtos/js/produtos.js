@@ -79,4 +79,31 @@ $(document).ready(function(){
             }  
         });
     }
+
+    $(document).on("click","#btn-finalizar-compra",function(){
+        
+        let current_datetime = new Date();
+        let formatted_date = current_datetime.getDate() + "/" + (current_datetime.getMonth() + 1) + "/" + current_datetime.getFullYear() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds();
+        
+        console.log(formatted_date);
+
+        var x = $("#idCliente").val();
+        
+        $.post('produtos/cadVenda/', {data: current_datetime, idCliente: x}  ).done(function(data) {
+            try {
+                if(data == "sucess")
+                    alert("Aeeee");
+            } catch (error) {
+                alert(error);
+            }
+        });
+        
+        // $.post('produtos/cadCompra/',  ).done(function(data) {
+        //     try {
+        //         alert("Aeeee");
+        //     } catch (error) {
+        //         alert(error);
+        //     }
+        // });
+	});
 });

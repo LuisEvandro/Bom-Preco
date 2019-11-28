@@ -36,6 +36,7 @@
                 </div>
                 <div class="row" style="padding-top:25px">
                     <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                        <input type="hidden" name="idCliente" id="idCliente" value = "<?php echo $_SESSION["codigo"] ?>" />
                         <div class="row" id="list-cart">
                             <!-- Cart List -->
                         </div>

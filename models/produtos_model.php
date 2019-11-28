@@ -73,7 +73,7 @@ class Produtos_Model extends Model {
             $i=0;
 
             foreach($carrinho as $pro=>$qtd){
-                    //pega a descricao e valor unitario do produto 
+                    //pega a descricao e valor unitario do produto
                     $param=array(":par_cod"=>$pro);
                     $infopro=$this->db->select($sql,$param);
                     $vetRes[$i]["codigo"]=$pro;
@@ -89,4 +89,15 @@ class Produtos_Model extends Model {
             echo $result;
         }
     }
-}
+
+    public function cadVenda(){
+        
+
+        $data = $_POST["data"];
+        $idcliente = $_POST["idCliente"];
+        
+        $this->db->insert('venda', array('datahora'=>$data,'cliente'=>$idcliente)); 
+
+        echo "sucess";
+        }
+    }
