@@ -92,12 +92,32 @@ class Produtos_Model extends Model {
 
     public function cadVenda(){
         
+        $sqlx="SELECT numero FROM lojaphp.venda ORDER BY numero DESC LIMIT 1";
+        $infovenda=$this->db->select($sqlx);
+        
 
-        $data = $_POST["data"];
         $idcliente = $_POST["idCliente"];
         
-        $this->db->insert('venda', array('datahora'=>$data,'cliente'=>$idcliente)); 
+        $this->db->insert('venda', array("cliente"=>$idcliente)); 
 
+        
+        
+        //carrega a variavel de sessao carrinho para a variavel
+        $carrinho=Session::get('carrinho');
+        // $query = 'INSERT INTO venda_produto (venda, produto, qtd) VALUES ';
+        // $i=0;
+        $resp;
+        foreach($carrinho as $pro=>$qtd){
+            // $i++;
+            // $query .= '('.$infovenda[0]->numero.', '.$pro.', '.$qtd.')';
+            // if($i < count($carrinho)){
+            //     $query .=', ';
+            // }
+            $resp = $this->db->insert('venda_produto', array('venda'=>$infovenda[0]->numero, 'produto'=>$pro, 'qtd'=>$qtd));
+        }
+        Session::init();
+        Session::set('carrinho',array());
         echo "sucess";
+        //var_dump($resp);
         }
     }

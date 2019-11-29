@@ -89,10 +89,18 @@ $(document).ready(function(){
 
         var x = $("#idCliente").val();
         
-        $.post('produtos/cadVenda/', {data: current_datetime, idCliente: x}  ).done(function(data) {
+        $.post('produtos/cadVenda/', {idCliente: x} ).done(function(data) {
             try {
                 if(data == "sucess")
-                    alert("Aeeee");
+                    Swal.fire({
+                        type: "success",
+                        html: "<h4><strong>Compra realizada com sucesso !</strong></h4>",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                    setTimeout(function(){
+                        window.location='/BomPreco/produtos';
+                    }, 2100);
             } catch (error) {
                 alert(error);
             }

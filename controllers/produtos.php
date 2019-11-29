@@ -4,7 +4,7 @@ class Produtos extends Controller {
 
     function __construct() {
         parent::__construct();
-        //Auth::autentica();
+        Auth::autentica();
         $this->view->js = array('produtos/js/produtos.js');
     }
     
@@ -31,4 +31,8 @@ class Produtos extends Controller {
         $this->model->rmCarrinho();
     }
   
+
+    public function cadVenda(){
+        $this->model->cadVenda();
+    }
 }
